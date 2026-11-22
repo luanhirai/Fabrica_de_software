@@ -1,0 +1,6 @@
+# Configuração local da Fábrica para Codex CLI.
+# Perfis customizados são carregados de .codex/agents/.
+
+[agents]
+enabled = true
+max_concurrent_threads_per_session = 6
