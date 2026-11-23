@@ -4,7 +4,7 @@
 
 **Created**: 2026-11-22
 
-**Status**: Draft — aguarda aprovação do responsável pelo projeto
+**Status**: Approved by project owner on 2026-11-22
 
 **Input**: User-provided assignment context and supplied project requirements for the first demonstration feature.
 

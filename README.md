@@ -18,6 +18,10 @@ npm start
 
 Abra `http://localhost:3000`. O projeto de origem não define testes automatizados (`npm test` é apenas um placeholder).
 
+## Ver a Fábrica trocando de agentes
+
+`localhost:3000` mostra somente a aplicação demonstrativa. Para acompanhar o Orquestrador chamando os perfis especializados, execute `tools/demo-fabrica.ps1` em uma janela PowerShell dentro do clone. O lançador abre o Codex CLI em modo somente leitura e segue o roteiro em `prompts/demo-agentes.md`; requer login do Codex e conexão ao serviço do modelo. Os agentes são chamados na interface do Codex, não dentro da página Express.
+
 ## Fábrica no Codex
 
 - `AGENTS.md` descreve regras do projeto e o processo aprovado.
