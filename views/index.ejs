@@ -4,10 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>App Demo - Informações do Servidor</title>
+  <style>
+    .server-time {
+      color: #b42318;
+      font-weight: 700;
+    }
+  </style>
 </head>
 <body>
   <h1>Informações do Servidor</h1>
   <p>Endereço IP do Servidor: <%= ip %></p>
-  <p>Hora Atual do Servidor: <%= horaAtual %></p>
+  <p>Data e hora do servidor:
+    <% if (horaAtualDisponivel) { %>
+      <strong class="server-time"><%= horaAtual %></strong>
+    <% } else { %>
+      <span role="status">Data e hora indisponíveis no momento.</span>
+    <% } %>
+  </p>
 </body>
 </html>

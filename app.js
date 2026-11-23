@@ -1,6 +1,5 @@
 const express = require('express');
 const os = require('os');
-const moment = require('moment');
 
 const app = express();
 const port = 3000;
@@ -12,11 +11,28 @@ app.get('/', (req, res) => {
   // Obter o endereço IP do servidor
   const ip = getIpAddress();
 
-  // Obter a hora atual do servidor
-  const horaAtual = moment().format('YYYY-MM-DD HH:mm:ss');
+  // Capturar e formatar uma única vez para esta resposta, sem depender do fuso do host.
+  let horaAtual = null;
+  try {
+    const serverDateTimeFormatter = new Intl.DateTimeFormat('pt-BR', {
+      timeZone: 'America/Sao_Paulo',
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hourCycle: 'h23',
+    });
+    const partes = serverDateTimeFormatter.formatToParts(new Date());
+    const valores = Object.fromEntries(partes.map(({ type, value }) => [type, value]));
+    horaAtual = `${valores.day}/${valores.month}/${valores.year} ${valores.hour}:${valores.minute}:${valores.second}`;
+  } catch (error) {
+    console.error('Não foi possível formatar a data e hora do servidor:', error);
+  }
 
   // Renderizar a página ejs com as informações
-  res.render('index', { ip, horaAtual });
+  res.render('index', { ip, horaAtual, horaAtualDisponivel: Boolean(horaAtual) });
 });
 
 // Função para obter o endereço IP do servidor
